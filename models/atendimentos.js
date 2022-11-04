@@ -1,6 +1,6 @@
 const conexao = require('../infraestrutura/conexao')
 
-class cadastrarAtendimento {
+class Atendimento {
     adiciona(atendimento, res) {
 
         const nomeValido = atendimento.nomeFuncionario.length >= 5
@@ -31,6 +31,17 @@ class cadastrarAtendimento {
             })
         }
     }
+
+    listar(res) {
+        const sql = 'SELECT * FROM atendimentos'
+        conexao.query(sql, (erro, resultados) => {
+            if(erro){
+                res.status(400).json(erro)
+            } else {
+                res.status(200).json(resultados)
+            }
+        })
+    }
 }
 
-module.exports = new cadastrarAtendimento
+module.exports = new Atendimento
