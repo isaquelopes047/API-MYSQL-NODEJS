@@ -32,14 +32,49 @@ class Atendimento {
         }
     }
 
-    listar(res) {
+    listar(res, error) {
+        if(error) {return res.status(400).send({error: error})};
+
         const sql = 'SELECT * FROM atendimentos'
         conexao.query(sql, (erro, resultados) => {
-            if(erro){
-                res.status(400).json(erro)
-            } else {
-                res.status(200).json(resultados)
+            
+        if(error) {return res.status(400).send({error: error})}
+
+        res.status(202).send({resultados})
+        })
+    }
+
+    listarPorId(id, res, error) {
+        if(error) {return res.status(400).send({error: error})};
+
+        const sql = `SELECT * FROM atendimentos WHERE id=${id};`
+        conexao.query(sql, (erro, resultados) => {
+            
+            if(error) {return res.status(400).send({error: error})}
+
+            res.status(202).send({resultados})
+        })
+    }
+
+    apagaRegistro(id, res, error) {
+        if(error) {return res.status(400).send({error: error})}
+
+        const sql = `DELETE FROM atendimentos WHERE id=${id};`
+        conexao.query(sql, (error) => {
+               
+            if(error) {return res.status(400).send({error: error})}
+
+            const response = {
+                mensagem: 'Registro deletado com sucesso!',
+                registroApagado: {
+                    request: {
+                        tipo: 'POST',
+                        descricao: 'Realizar novo registro',
+                        url: 'http://localhost:3000/atendimentos'
+                    }
+                }
             }
+            res.status(202).send({response})
         })
     }
 }
