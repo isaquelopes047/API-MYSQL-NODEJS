@@ -15,7 +15,6 @@ module.exports = app => {
 
     app.get('/atendimentos/:id', (req, res) => {
         const id = parseInt(req.params.id)
-<<<<<<< HEAD
         Atendimento.listarPorId(id, res);
     })
 
@@ -34,20 +33,11 @@ module.exports = app => {
     app.delete('/atendimentos/:id', (req, res) => {
         const id = parseInt(req.params.id)
         Atendimento.DeletarPorId(id, res);
-=======
-        Atendimento.listarPorId(id, res)
-    })
-
-    app.delete('/atendimentos/:id', (req, res) => {
-        const id = parseInt(req.params.id)
-        Atendimento.apagaRegistro(id, res)
->>>>>>> d930be040debd71959f6266420775e5f3842f82b
     })
 
     app.post('/atendimentos', async (req, res) => {
         const atendimento = req.body
         Atendimento.adiciona(atendimento, res);
-<<<<<<< HEAD
     })
 
     app.patch('/atendimentos/:id', (req, res) => {
@@ -55,8 +45,6 @@ module.exports = app => {
         const valores = req.body;
 
         Atendimento.alterarRegistro(id, valores, res)
-=======
->>>>>>> d930be040debd71959f6266420775e5f3842f82b
     })
 
 }

@@ -1,7 +1,7 @@
 const customExpress = require('./config/customExpress');
 const conexao = require('./infraestrutura/conexao');
 /* const Tabelas = require('./infraestrutura/tabelaAtendimento') */
-const PORT = process.env.PORT || 3100
+const PORT = process.env.PORT || 3200
 
 conexao.connect(erro => {
 
