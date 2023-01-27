@@ -9,7 +9,7 @@ conexao.connect(erro => {
         const app = customExpress();
         console.log('Conectado com o Bando de Dados com sucesso!')
        /*  Tabelas.init(conexao) */
-        app.listen(PORT, () => { 
+        app.listen(PORT || process.env.PORT, () => { 
             console.log(`Servidor rodando em: http://localhost:${PORT}`);
         }); 
     }
