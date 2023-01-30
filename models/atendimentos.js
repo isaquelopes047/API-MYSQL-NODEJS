@@ -4,7 +4,7 @@ class Atendimento {
     /* Cadatra um registro, e faz uma pequena validação */
     adiciona(atendimento, res) {
 
-            const sql = 'INSERT INTO Atendimentos SET ?'
+            const sql = 'INSERT INTO atendimentos SET ?'
             conexao.query(sql, atendimento, (erro, resultados) => {
                 if (erro) {
                     res.status(400).json(erro)
@@ -13,7 +13,6 @@ class Atendimento {
                     res.status(201).json(resultados)
                 }
             })
-        
     }
 
     /* Todos os registros no banco */
@@ -21,9 +20,11 @@ class Atendimento {
         const sql = 'SELECT * FROM atendimentos'
         conexao.query(sql, (erro, resultados) => {
             
-        if(error) {return res.status(400).send({error: error})}
-
-        res.status(202).send({resultados})
+            if(erro){
+                res.status(400).json(erro)
+            } else {
+                res.status(200).json(resultados)
+            }
         })
     }
 
@@ -33,9 +34,11 @@ class Atendimento {
         const sql = `SELECT * FROM atendimentos WHERE id=${id};`
         conexao.query(sql, (erro, resultados) => {
             
-            if(error) {return res.status(400).send({error: error})}
-
-            res.status(202).send({resultados})
+            if(erro){
+                res.status(400).json(erro)
+            } else {
+                res.status(200).json(resultados)
+            }
         })
     }
 
