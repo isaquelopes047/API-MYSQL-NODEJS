@@ -1,6 +1,6 @@
 const customExpress = require('./config/customExpress');
 /* const Tabelas = require('./infraestrutura/tabelaAtendimento') */
-const PORT = process.env.PORT || 3200
+const PORT = process.env.PORT || 8000
 const app = customExpress();
 
 /*  Tabelas.init(conexao) */

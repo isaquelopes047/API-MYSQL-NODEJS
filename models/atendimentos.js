@@ -17,7 +17,7 @@ class Atendimento {
 
     /* Todos os registros no banco */
     listar(res) {
-        const sql = 'SELECT * FROM atendimentos'
+        const sql = 'SELECT * FROM contatosTb'
         conexao.query(sql, (erro, resultados) => {
             
             if(erro){
@@ -77,8 +77,8 @@ class Atendimento {
     }
     
     /* Listar registro por nomeFuncionario, GET em todos que tem registro */
-    listarPorFuncionario(nomeFuncionario, res) {
-        const sql = `SELECT * FROM atendimentos WHERE nomeFuncionario = '${nomeFuncionario}' ORDER BY id DESC`;
+    listarPorSetor(setor, res) {
+        const sql = `SELECT * FROM contatosTb WHERE setor = '${setor}'`;
         conexao.query(sql, (erro, resultados) => {
             if(erro){
                 res.status(400).json(erro)

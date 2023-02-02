@@ -9,7 +9,7 @@ module.exports = app => {
         origin: '*',
     }));
 
-    app.get('/atendimentos', (req, res) => {
+    app.get('/contatos', (req, res) => {
         Atendimento.listar(res);
     })
 
@@ -25,9 +25,9 @@ module.exports = app => {
         Atendimento.listarPorData(dataInicio, dataFinal, res);
     })
 
-    app.get('/atendimentos/busca/:nomeFuncionario', (req, res) => {
-        const nomeFuncionario = req.params.nomeFuncionario
-        Atendimento.listarPorFuncionario(nomeFuncionario, res);
+    app.get('/contatos/:setor', (req, res) => {
+        const setor = req.params.setor
+        Atendimento.listarPorSetor(setor, res);
     })
 
     app.delete('/atendimentos/:id', (req, res) => {
