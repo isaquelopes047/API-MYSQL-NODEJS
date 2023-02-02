@@ -25,7 +25,7 @@ module.exports = app => {
         Atendimento.listarPorData(dataInicio, dataFinal, res);
     })
 
-    app.get('/contatos/:setor', (req, res) => {
+    app.get('/contatos/setor/:setor', (req, res) => {
         const setor = req.params.setor
         Atendimento.listarPorSetor(setor, res);
     })
