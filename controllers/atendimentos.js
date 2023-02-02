@@ -13,7 +13,7 @@ module.exports = app => {
         Atendimento.listar(res);
     })
 
-    app.get('/atendimentos/:id', (req, res) => {
+    app.get('/contatos/:id', (req, res) => {
         const id = parseInt(req.params.id)
         Atendimento.listarPorId(id, res);
     })

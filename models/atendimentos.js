@@ -31,7 +31,7 @@ class Atendimento {
     listarPorId(id, res, error) {
         if(error) {return res.status(400).send({error: error})};
 
-        const sql = `SELECT * FROM atendimentos WHERE id=${id};`
+        const sql = `SELECT * FROM contatosTb WHERE id=${id};`
         conexao.query(sql, (erro, resultados) => {
             
             if(erro){
@@ -61,18 +61,6 @@ class Atendimento {
                 }
             }
             res.status(202).send({response})
-        })
-    }
-
-    /* Listar registro pelo seu primary key */
-    listarPorId(id, res) {
-        const sql = `SELECT * FROM atendimentos WHERE id = ${id}`
-        conexao.query(sql, (erro, resultados) => {
-            if(erro){
-                res.status(400).json(erro)
-            } else {
-                res.status(200).json(resultados)
-            }
         })
     }
     
